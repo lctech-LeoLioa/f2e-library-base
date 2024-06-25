@@ -39,8 +39,8 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: false,
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
-        name: 'F2e',
-        fileName: `F2e-base`,
+        name: 'f2e',
+        fileName: `f2e-base`,
       },
       rollupOptions: {
         external: ['@lctech-tw/f2e-doooooooog'],
@@ -51,7 +51,7 @@ export default defineConfig(({ mode }) => {
           },
           assetFileNames: assetInfo => {
             if (assetInfo.name == 'style.css') {
-              return 'F2e-base.css'
+              return 'f2e-base.css'
             }
             return assetInfo.name
           },
