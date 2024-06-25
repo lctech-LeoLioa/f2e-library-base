@@ -1,0 +1,41 @@
+name: Node.js Package (Github)
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: ⚙️ Initialize Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0
+      with:
+        project_id: jkf-servers
+        service_account_key: ${{ secrets.GCP_SA_KEY_GITHUB_CI }}
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+    - name: Authenticate with GitHub package registry
+      run: |
+        rm -rf .npmrc
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.CI_TOKEN }}" >> .npmrc 
+        echo "@lctech-tw:registry=https://npm.pkg.github.com/" >> .npmrc
+    - name: <NPM> install
+      run: pnpm install && npm run build:beta
+    - name: Upload GCS
+      run: |
+        echo "Upload gcs (lc-public-storage-dev/pan-core/beta)" 
+        echo "beta"
+        gsutil cp -Z -r ./dist/* gs://lc-public-storage-dev/pan-core/beta
+        gsutil setmeta -h "Cache-Control: public, no-store" -r gs://lc-public-storage-dev/pan-core/beta/*
+    - name: Slack Notification on Success (O)
+      if: success()
+      run: |
+        echo "run slack on Success (O)"
+        curl -LJO https://raw.githubusercontent.com/lctech-tw/util_scripts/main/notify_slack.sh 
+        bash ./notify_slack.sh -s

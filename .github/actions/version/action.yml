@@ -1,0 +1,20 @@
+name: Get Package version
+description: 'return the package json version'
+
+outputs:
+  version:
+    description: version in package.json
+    value: ${{ steps.packageJson.outputs.version }}
+
+runs:
+  using: composite
+  steps:
+    - id: packageJson
+      shell: bash
+      run: |
+        # Read package.json content
+        PACKAGE_JSON=$(cat package.json)
+        # Extract version (assuming version property in package.json)
+        VERSION=$(jq -r '.version' <<< "$PACKAGE_JSON")
+        # Set output using the dedicated syntax
+        echo version=$VERSION >> $GITHUB_OUTPUT

@@ -1,0 +1,56 @@
+{
+  "name": "@lctech-tw/f2e-base",
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/f2e-base.umd.min.js",
+  "types": "./dist/f2e-base.d.ts",
+  "module": "./dist/f2e-base.js",
+  "exports": {
+    ".": {
+      "import": "./dist/f2e-base.js",
+      "require": "./dist/f2e-base.umd.cjs"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lctech-tw/pan-core-f2e"
+  },
+  "scripts": {
+    "serve": "vite",
+    "build": "vue-tsc && vite build",
+    "build:alpha": "vue-tsc && vite build --mode alpha",
+    "build:beta": "vue-tsc && vite build --mode beta",
+    "preview": "vite preview",
+    "release": "npx bumpp"
+  },
+  "dependencies": {
+    "@vueuse/components": "^10.10.0",
+    "@vueuse/core": "^10.10.0",
+    "@xstate/vue": "^3.1.2",
+    "vue": "^3.4.27"
+  },
+  "devDependencies": {
+    "@lctech-tw/f2e-doooooooog": "0.0.192",
+    "@types/node": "^20.12.13",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "@vitejs/plugin-vue": "^4.6.2",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "sass": "^1.77.4",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5",
+    "unplugin-auto-import": "^0.17.6",
+    "vite": "^5.2.12",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-svg-loader": "^5.1.0",
+    "vue-tsc": "^2.0.19"
+  }
+}
