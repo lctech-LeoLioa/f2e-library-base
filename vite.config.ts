@@ -26,7 +26,6 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
-        assets: fileURLToPath(new URL('./src/assets', import.meta.url)),
       },
     },
     css: {
@@ -40,8 +39,8 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: false,
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
-        name: 'Pan',
-        fileName: `pan-core-frontend`,
+        name: 'F2e',
+        fileName: `F2e-base`,
       },
       rollupOptions: {
         external: ['@lctech-tw/f2e-doooooooog'],
@@ -52,7 +51,7 @@ export default defineConfig(({ mode }) => {
           },
           assetFileNames: assetInfo => {
             if (assetInfo.name == 'style.css') {
-              return 'pan-core-frontend.css'
+              return 'F2e-base.css'
             }
             return assetInfo.name
           },
