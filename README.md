@@ -1,10 +1,8 @@
-[TOC]
-
 # f2e-base
 
 ## Start dev
 
-node version - `v18.18.0`
+node version - `v20.12.2`
 
 ## Project setup
 
