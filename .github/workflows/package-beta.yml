@@ -29,10 +29,10 @@ jobs:
       run: pnpm install && npm run build:beta
     - name: Upload GCS
       run: |
-        echo "Upload gcs (lc-public-storage-dev/pan-core/beta)" 
+        echo "Upload gcs (lc-public-storage-dev/f2e-base/beta)" 
         echo "beta"
-        gsutil cp -Z -r ./dist/* gs://lc-public-storage-dev/pan-core/beta
-        gsutil setmeta -h "Cache-Control: public, no-store" -r gs://lc-public-storage-dev/pan-core/beta/*
+        gsutil cp -Z -r ./dist/* gs://lc-public-storage-dev/f2e-base/beta
+        gsutil setmeta -h "Cache-Control: public, no-store" -r gs://lc-public-storage-dev/f2e-base/beta/*
     - name: Slack Notification on Success (O)
       if: success()
       run: |

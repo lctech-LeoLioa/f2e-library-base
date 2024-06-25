@@ -29,7 +29,7 @@ jobs:
       run: pnpm install && npm run build:alpha
     - name: Upload GCS
       run: |
-        echo "Upload gcs (lc-public-storage-dev/pan-core/alpha)" 
+        echo "Upload gcs (lc-public-storage-dev/f2e-base/alpha)" 
         echo "alpha"
-        gsutil cp -Z -r ./dist/* gs://lc-public-storage-dev/pan-core/alpha
-        gsutil setmeta -h "Cache-Control: public, no-store" -r gs://lc-public-storage-dev/pan-core/alpha/*
+        gsutil cp -Z -r ./dist/* gs://lc-public-storage-dev/f2e-base/alpha
+        gsutil setmeta -h "Cache-Control: public, no-store" -r gs://lc-public-storage-dev/f2e-base/alpha/*

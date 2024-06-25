@@ -46,9 +46,9 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Upload GCS
         run: |
-          echo "Upload gcs (lc-public-storage/pan-core)" 
+          echo "Upload gcs (lc-public-storage/f2e-base)" 
           echo "v${{steps.get_version.outputs.version}}"
-          gsutil cp -Z -r ./dist/* gs://lc-public-storage/pan-core/v${{steps.get_version.outputs.version}}
+          gsutil cp -Z -r ./dist/* gs://lc-public-storage/f2e-base/v${{steps.get_version.outputs.version}}
       - name: Slack Notification on Success (O)
         if: success()
         run: |

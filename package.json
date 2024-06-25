@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lctech-tw/pan-core-f2e"
+    "url": "git+https://github.com/lctech-tw/f2e-base"
   },
   "scripts": {
     "serve": "vite",
